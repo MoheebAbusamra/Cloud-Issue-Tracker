@@ -54,3 +54,9 @@ margin-top: 0.75rem;
 min-height: 1.25rem; 
 font-weight: 600; 
 }
+.Resolved {
+    background-color: rgb(96, 199, 96);
+}
+.NotResolved{
+    background-color: rgb(170, 102, 102);
+}

@@ -36,11 +36,7 @@ function toggleIssueStatus(issueId) {
     } 
  
     issue.status = issue.status === 'Open' ? 'Resolved' : 'Open';
-    // make color green if resolved and red if open
     
-    if (card) {
-        card.style.backgroundColor = issue.status === 'Resolved' ? 'lightgreen' : 'lightcoral';
-    }
 
 renderIssues();
 }
@@ -68,7 +64,13 @@ ${issue.status}`;
         button.textContent = issue.status === 'Open' ? 'Mark Resolved' : 
 'Reopen'; 
         button.addEventListener('click', () => toggleIssueStatus(issue.id)); 
- 
+        
+        if (issue.status==='Resolved') {
+            card.classList='Resolved';
+        }
+        else {
+            card.classList='NotResolved';
+        }
         card.append(heading, description, meta, button); 
         issuesList.append(card); 
     }); 
