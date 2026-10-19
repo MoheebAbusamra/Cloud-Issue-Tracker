@@ -2,7 +2,7 @@ const fs = require ('fs/promises');
 const path = require('path');
 const {randomUUID}= require ('crypto');
 
-const DATA_FILE= path.join(_dirname, '..', 'data','issues.json');
+const DATA_FILE= path.join(__dirname, '..', 'data','issues.json');
 
 async function readIssues() { 
     try {
@@ -10,14 +10,14 @@ async function readIssues() {
         return JSON.parse(text);
     }
     catch (error) { 
-        if (error.cpde === 'ENOENT') return [];
+        if (error.code === 'ENOENT') return [];
         throw error;
     }
     // ENOET MEANS DOESNOT EXIST
 }
 
-async function wrtieIssues(issues) { 
-    await fs.writeFile(DATE_FILE,JSON.stringify(issues,null,2));
+async function writeIssues(issues) { 
+    await fs.writeFile(DATA_FILE,JSON.stringify(issues,null,2));
 }
 
 async function createIssue (input) {
@@ -30,7 +30,7 @@ async function createIssue (input) {
         status: 'Open',
         createdAt: new Date().toISOString()
     };
-    issue.push(issue);
+    issues.push(issue);
     await wrtieIssues(issues);
     return issue;
 }
@@ -49,3 +49,4 @@ module.exports = {
     createIssue,
     updateIssueStatus
 };
+// console.log('testttt file has been ran');
