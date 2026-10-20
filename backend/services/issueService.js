@@ -31,7 +31,7 @@ async function createIssue (input) {
         createdAt: new Date().toISOString()
     };
     issues.push(issue);
-    await wrtieIssues(issues);
+    await writeIssues(issues);
     return issue;
 }
 
